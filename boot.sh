@@ -1,4 +1,4 @@
-set -e
+set +e
 
 ascii_art='________                  __        ___.
 \_____  \   _____ _____  |  | ____ _\_ |__
@@ -8,16 +8,16 @@ ascii_art='________                  __        ___.
         \/      \/     \/     \/         \/
 '
 
-echo -e "$ascii_art"
+echo +e "$ascii_art"
 echo "=> Omakub is for fresh Fedora installations only!"
-echo -e "\nBegin installation (or abort with ctrl+c)..."
+echo +e "\nBegin installation (or abort with ctrl+c)..."
 
 sudo dnf check-update >/dev/null
 sudo dnf install -y git >/dev/null
 
 echo "Cloning Omakub..."
 rm -rf ~/.local/share/omakub
-git clone https://github.com/brsc2909/omakub-fedora.git ~/.local/share/omakub >/dev/null
+git clone https://github.com/Extrime74/omakub-fedora.git ~/.local/share/omakub >/dev/null
 if [[ $OMAKUB_REF != "master" ]]; then
 	cd ~/.local/share/omakub
 	git fetch origin "${OMAKUB_REF:-stable}" && git checkout "${OMAKUB_REF:-stable}"
